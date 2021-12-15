@@ -1,22 +1,24 @@
 <template>
-  <div class="">Count : {{ counter }}</div>
+  <div class="">Count : {{ nilai }}</div>
   <button @click="add">Add</button>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 
 export default {
   setup() {
-    const counter = ref(0);
+    const counter = reactive({
+      nilai: 0,
+    });
 
     //method 
     const add = () => {
-      counter.value++;
+      counter.nilai++;
     }
-    
+
     return {
-      counter,
+      ...toRefs(counter),
       add
     }
   }
