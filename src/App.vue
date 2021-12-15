@@ -1,24 +1,23 @@
 <template>
-  <div class="">{{ name }}</div>
-  <div class="">{{ age }}</div>
+  <div class="">Count : {{ counter }}</div>
+  <button @click="add">Add</button>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue';
+import { ref } from 'vue';
 
 export default {
   setup() {
-    const user = reactive({
-      name: "M Fadil",
-      age: "19"
-    });
+    const counter = ref(0);
 
-    setTimeout(() => {
-      user.name = "Mukhamad Fadil";
-    }, 2000);
-
+    //method 
+    const add = () => {
+      counter.value++;
+    }
+    
     return {
-      ...toRefs(user),
+      counter,
+      add
     }
   }
 }
