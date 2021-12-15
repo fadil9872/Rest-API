@@ -1,21 +1,25 @@
 <template>
-  <div class="">{{ message }}</div>
+  <div class="">Count : {{ nilai }}</div>
+  <button @click="add">Add</button>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 
 export default {
   setup() {
-    const message = ref("halo");
+    const counter = reactive({
+      nilai: 0,
+    });
 
-    setTimeout(() => {
-      console.log(message);
-      message.value = "composition api";
-    }, 2000);
+    //method 
+    const add = () => {
+      counter.nilai++;
+    }
 
     return {
-      message
+      ...toRefs(counter),
+      add
     }
   }
 }
