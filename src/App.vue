@@ -1,21 +1,24 @@
 <template>
-  <div class="">{{ message }}</div>
+  <div class="">{{ user.name }}</div>
+  <div class="">{{ user.age }}</div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
 export default {
   setup() {
-    const message = ref("halo");
+    const user = reactive({
+      name: "M Fadil",
+      age: "19"
+    });
 
     setTimeout(() => {
-      console.log(message);
-      message.value = "composition api";
+      user.name = "Mukhamad Fadil";
     }, 2000);
 
     return {
-      message
+      user
     }
   }
 }
